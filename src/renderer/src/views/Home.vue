@@ -396,7 +396,7 @@ const insertText = (text) => {
   width: 100%;
   height: 100%;
   position: relative;
-  max-height: calc(100vh - 300px);
+  max-height: calc(100vh - 460px);
   overflow-y: scroll;
   padding: 20px 0;
 }
