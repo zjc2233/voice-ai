@@ -2,11 +2,11 @@
   <div class="home">
     <div class="header">语音AI工具</div>
     <div class="content">
-      <el-row :gutter="20" class="w-full h-full">
-        <el-col :span="7" :offset="5">
+      <el-row :gutter="20" class="w-full h-full flex justify-center">
+        <el-col :xs="11" :sm="10" :md="9" :lg="8" :xl="7" >
           <InputAudio @sendText="sendText" />
         </el-col>
-        <el-col :span="7" :offset="0">
+        <el-col :xs="11" :sm="10" :md="9" :lg="8" :xl="7">
           <InputAI ref="inputAI" />
         </el-col>
       </el-row>
@@ -31,7 +31,7 @@ const sendText = (text: string) => {
 .home {
   width: 100vw;
   height: 100vh;
-  min-width: 600px;
+  min-width: 70cap;
   min-height: 400px;
   position: relative;
   .header {

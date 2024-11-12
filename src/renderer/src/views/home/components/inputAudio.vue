@@ -52,8 +52,8 @@ import { generate32BitRandomCode } from '../../../utils/common'
 
 const emits = defineEmits(['sendText'])
 
-const zjc_token = '6c83b8dcfbd04ed1adc8ae9b8fe78d47'
-const zjc_appkey = 'Z7zm3rL6QnmMbRb0'
+const ali_token = import.meta.env.RENDERER_VITE_ALI_TOKEN
+const ali_appkey = import.meta.env.RENDERER_VITE_ALI_APPKEY
 const microphoneList = ref([]) // 录音设备列表
 const speakerList = ref([]) // 扬声器设备列表
 const microphoneValue = ref('default')
@@ -64,8 +64,7 @@ let websocket_task_id = ''
 let message_id = ''
 const audio2textResult = ref([
   '你好，你能听到我说话吗？我感觉你也是可以听到的，但是你这边都有什么意思呢？你能说什么呢？',
-  '你好，你能听到我说话吗？我感觉你也是可以听到的，但是你这边都有什么意思呢？你能说什么呢？',
-
+  '你好，你能听到我说话吗？我感觉你也是可以听到的，但是你这边都有什么意思呢？你能说什么呢？'
 ])
 const equipmentType = ref('麦克风')
 const equipmentTypeList = ['麦克风', '扬声器']
@@ -185,7 +184,7 @@ const initWebSocket = () => {
     ws.close()
     ws == null
   }
-  const wsUrl = `wss://nls-gateway-cn-shanghai.aliyuncs.com/ws/v1?token=${zjc_token}`
+  const wsUrl = `wss://nls-gateway-cn-shanghai.aliyuncs.com/ws/v1?token=${ali_token}`
   //连接服务端
   ws = new WebSocket(wsUrl)
   //指定事件回调
@@ -207,7 +206,7 @@ const websocketOnOpen = () => {
       task_id: websocket_task_id,
       namespace: 'SpeechTranscriber',
       name: 'StartTranscription',
-      appkey: zjc_appkey
+      appkey: ali_appkey
     },
     payload: {
       format: 'PCM', //音频编码格式，默认是PCM（无压缩的PCM文件或WAV文件），16bit采样位数的单声道。
@@ -234,7 +233,7 @@ const websocketSendStop = () => {
       task_id: websocket_task_id,
       namespace: 'SpeechTranscriber',
       name: 'StopTranscription',
-      appkey: zjc_appkey
+      appkey: ali_appkey
     }
   }
   websocketSend(JSON.stringify(actions))
@@ -289,7 +288,8 @@ const sendText = (text) => {
 
 <style lang="scss" scoped>
 .input-audio {
-  width: 400px;
+  max-width: 400px;
+  min-width: 300px;
   height: 100%;
   top: 0;
   position: relative;
