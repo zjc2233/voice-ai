@@ -14,6 +14,15 @@ export default defineConfig({
     plugins: [externalizeDepsPlugin()]
   },
   renderer: {
+    server: {
+      proxy: {
+        '/deepseekApi': {
+          target: 'https://api.deepseek.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/deepseekApi/, ''),
+        },
+      }
+    },
     resolve: {
       alias: {
         '@renderer': resolve('src/renderer/src')

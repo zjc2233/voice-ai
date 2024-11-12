@@ -3,7 +3,7 @@
     <div class="header">语音AI工具</div>
     <div class="content">
       <el-row :gutter="20" class="w-full h-full flex justify-center">
-        <el-col :xs="11" :sm="10" :md="9" :lg="8" :xl="7" >
+        <el-col :xs="11" :sm="10" :md="9" :lg="8" :xl="7">
           <InputAudio @sendText="sendText" />
         </el-col>
         <el-col :xs="11" :sm="10" :md="9" :lg="8" :xl="7">
@@ -21,9 +21,8 @@ import InputAudio from './components/inputAudio.vue'
 
 const inputAI = ref<InstanceType<typeof InputAI>>()
 
-const sendText = (text: string) => {
-  console.log(text)
-  inputAI.value?.insertText(text)
+const sendText = (text: string, immediately: boolean = false) => {
+  inputAI.value?.insertText(text, immediately)
 }
 </script>
 

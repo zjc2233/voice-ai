@@ -38,8 +38,9 @@
     <div class="audio2textResult_box">
       <div class="microphonetranscript" v-for="(item, index) in audio2textResult" :key="index">
         <div class="text_6">{{ item }}</div>
-        <el-icon class="edit-box" :size="16" :color="'#409eff'" @click="sendText(item)">
-          <Edit />
+        <el-icon class="edit-box" :size="16" :color="'#409eff'">
+          <Edit @click="sendText(item)" />
+          <ChatDotSquare @click="sendText(item, true)" />
         </el-icon>
       </div>
     </div>
@@ -62,10 +63,7 @@ let audioContext = null
 let ws = null
 let websocket_task_id = ''
 let message_id = ''
-const audio2textResult = ref([
-  '你好，你能听到我说话吗？我感觉你也是可以听到的，但是你这边都有什么意思呢？你能说什么呢？',
-  '你好，你能听到我说话吗？我感觉你也是可以听到的，但是你这边都有什么意思呢？你能说什么呢？'
-])
+const audio2textResult = ref(['vue2和vue3的区别'])
 const equipmentType = ref('麦克风')
 const equipmentTypeList = ['麦克风', '扬声器']
 
@@ -279,10 +277,10 @@ const websocketClose = (e) => {
   console.log('websocketClose断开连接')
 }
 
-const sendText = (text) => {
+const sendText = (text, immediately = false) => {
   //插入文本
   console.log('插入文本', text)
-  emits('sendText', text)
+  emits('sendText', text, immediately)
 }
 </script>
 
@@ -351,18 +349,13 @@ const sendText = (text) => {
     color: #d1d5db;
   }
   .edit-box {
-    display: none;
-  }
-  &:hover {
-    .edit-box {
-      display: inline-block;
-      position: absolute;
-      top: 14px;
-      right: 10px;
-      font-size: 20px;
-      color: #f3f4f6;
-      cursor: pointer;
-    }
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #f3f4f6;
+    cursor: pointer;
   }
 }
 </style>
