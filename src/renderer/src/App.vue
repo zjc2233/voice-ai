@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Home from './views/Home.vue'
+import Home from './views/home/index.vue'
 
 // const ipcHandle = () => window.electron.ipcRenderer.send('ping')
 </script>
