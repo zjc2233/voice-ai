@@ -3,10 +3,10 @@
     <div class="header">语音AI工具</div>
     <div class="content">
       <el-row :gutter="20" class="w-full h-full flex justify-center">
-        <el-col :xs="11" :sm="10" :md="9" :lg="8" :xl="7">
+        <el-col :xs="11" :sm="10" :md="9" :lg="9" :xl="9">
           <InputAudio @sendText="sendText" />
         </el-col>
-        <el-col :xs="11" :sm="10" :md="9" :lg="8" :xl="7">
+        <el-col :xs="11" :sm="10" :md="9" :lg="9" :xl="9">
           <InputAI ref="inputAI" />
         </el-col>
       </el-row>

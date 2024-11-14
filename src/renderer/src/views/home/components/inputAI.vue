@@ -158,7 +158,7 @@ defineExpose({
 </script>
 <style scoped lang="scss">
 .input_ai {
-  max-width: 400px;
+  max-width: 600px;
   min-width: 300px;
   height: auto;
   height: 100%;

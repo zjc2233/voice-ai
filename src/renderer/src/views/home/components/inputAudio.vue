@@ -294,7 +294,7 @@ const clearResult = () => {
 
 <style lang="scss" scoped>
 .input-audio {
-  max-width: 400px;
+  max-width: 600px;
   min-width: 300px;
   height: 100%;
   top: 0;
