@@ -12,7 +12,10 @@
       @keyup.enter.native="submitAi()"
       clearable
     ></el-input>
-    <el-button type="success" @click="submitAi()">提交给AI</el-button>
+    <div>
+      <el-button type="success" @click="submitAi()">提交给AI</el-button>
+      <el-button type="info" @click="clearResult()">清空结果</el-button>
+    </div>
     <div class="airesponse">
       <div class="microphonetranscript" v-for="(item, index) in aiResponseList" :key="index">
         <div class="text_6">{{ item }}</div>
@@ -60,7 +63,12 @@ const deepseeekConfig = {
   top_logprobs: null
 }
 
+// 创建 AbortController 实例
+let controller, signal
+
 const submitAi = () => {
+  controller = new AbortController()
+  signal = controller.signal
   deepseeekConfig.messages[0].content = inputText.value
   const body = JSON.stringify(deepseeekConfig)
   fetch(`http://localhost:5173/deepseekApi/chat/completions`, {
@@ -70,6 +78,7 @@ const submitAi = () => {
       Authorization: `Bearer ${import.meta.env.RENDERER_VITE_DEEPSEEK_APIKEY}` // 自定义请求头
     },
     body,
+    signal,
     responseType: 'stream' // 响应类型为流
   }).then((response) => {
     const reader = response.body.getReader()
@@ -117,6 +126,11 @@ const submitAi = () => {
 
     read()
   })
+}
+
+const clearResult = () => {
+  controller.abort()
+  aiResponseList.length = 0
 }
 
 defineExpose({

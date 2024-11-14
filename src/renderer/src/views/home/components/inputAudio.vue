@@ -34,6 +34,8 @@
     <div>
       <el-button type="primary" @click="startIntercom()">开始采集</el-button>
       <el-button type="danger" @click="stopRecord()">停止录音</el-button>
+      <el-button type="info" @click="clearResult()">清空结果</el-button>
+      <el-button type="success" v-if="audioContext">ok</el-button>
     </div>
     <div class="audio2textResult_box">
       <div class="microphonetranscript" v-for="(item, index) in audio2textResult" :key="index">
@@ -50,6 +52,7 @@
 <script setup lang="ts">
 import { ref, defineEmits } from 'vue'
 import { generate32BitRandomCode } from '../../../utils/common'
+import { clear } from 'console';
 
 const emits = defineEmits(['sendText'])
 
@@ -59,7 +62,7 @@ const microphoneList = ref([]) // 录音设备列表
 const speakerList = ref([]) // 扬声器设备列表
 const microphoneValue = ref('default')
 const speakerValue = ref('default')
-let audioContext = null
+const audioContext = ref(null) // 录音上下文
 let ws = null
 let websocket_task_id = ''
 let message_id = ''
@@ -112,9 +115,9 @@ const startRecord = () => {
   navigator.mediaDevices
     .getUserMedia(constraints)
     .then((stream) => {
-      audioContext = new AudioContext()
-      const source = audioContext.createMediaStreamSource(stream)
-      const processor = audioContext.createScriptProcessor(4096, 1, 1)
+      audioContext.value = new AudioContext()
+      const source = audioContext.value.createMediaStreamSource(stream)
+      const processor = audioContext.value.createScriptProcessor(4096, 1, 1)
       processor.onaudioprocess = (event) => {
         console.log('event', event)
 
@@ -129,7 +132,7 @@ const startRecord = () => {
         // websocketSendStop() //发送结束
       }
       source.connect(processor)
-      processor.connect(audioContext.destination)
+      processor.connect(audioContext.value.destination)
     })
     .catch((err) => {
       console.error(`错误发生 ${err.name}: ${err.message}`)
@@ -174,7 +177,8 @@ const downsampleBuffer = (buffer, inputSampleRate, outputSampleRate) => {
 
 // 停止录音
 const stopRecord = () => {
-  audioContext.close()
+  audioContext.value.close()
+  audioContext.value = null
 }
 const initWebSocket = () => {
   //关闭websocket
@@ -281,6 +285,11 @@ const sendText = (text, immediately = false) => {
   //插入文本
   console.log('插入文本', text)
   emits('sendText', text, immediately)
+}
+
+const clearResult = () => {
+  //清空结果
+  audio2textResult.value = []
 }
 </script>
 
