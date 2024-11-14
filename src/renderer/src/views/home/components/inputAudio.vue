@@ -255,9 +255,6 @@ const websocketOnMessage = (e) => {
   const redata = JSON.parse(e.data)
   if (redata.header.name === 'TranscriptionResultChanged') {
     console.log('数据接收-返回的数据', redata.payload)
-
-    //websocket 语音转文本 一句话是否收集完毕  true:完毕
-    websocket_audio2txt_complete_b = false //数据在收集中
   } else if (redata.header.name === 'SentenceBegin') {
     //一句话开始后，就可以启动录音了
   } else if (redata.header.name === 'TranscriptionStarted') {
