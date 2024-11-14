@@ -33,6 +33,8 @@
     </el-select>
     <div>
       <el-button type="primary" @click="startIntercom()">开始采集</el-button>
+      <el-button type="danger" @click="websocketSendStop()">暂停</el-button>
+      <el-button type="success" @click="websocketOnOpen()">继续</el-button>
       <el-button type="danger" @click="stopRecord()">停止录音</el-button>
       <el-button type="info" @click="clearResult()">清空结果</el-button>
       <el-button type="success" v-if="audioContext">ok</el-button>
@@ -121,15 +123,15 @@ const startRecord = () => {
       const source = audioContext.value.createMediaStreamSource(stream)
       const processor = audioContext.value.createScriptProcessor(4096, 1, 1)
       processor.onaudioprocess = (event) => {
-        console.log('event', event)
+        // console.log('event', event)
 
         const inputBuffer = event.inputBuffer.getChannelData(0)
         const downsampledBuffer = downsampleBuffer(inputBuffer, 48000, 16000)
         const pcmData = float32ToPCM(downsampledBuffer)
-        console.log('pcmData', pcmData)
+        // console.log('pcmData', pcmData)
 
         websocketSend(pcmData)
-        console.log('Sent downsampled PCM data:', pcmData.byteLength)
+        // console.log('Sent downsampled PCM data:', pcmData.byteLength)
 
         // websocketSendStop() //发送结束
       }
@@ -201,8 +203,8 @@ const initWebSocket = () => {
 const websocketOnOpen = () => {
   //连接建立之后执行send方法发送数据
   console.log('向 websocket 发送 链接请求')
-  websocket_task_id = generate32BitRandomCode() //生成新的任务id
-  message_id = generate32BitRandomCode()
+  websocket_task_id = websocket_task_id || generate32BitRandomCode() //生成新的任务id
+  message_id = message_id || generate32BitRandomCode()
   //actions 是首次连接需要的参数,可自行看阿里云文档
   const actions = {
     header: {
