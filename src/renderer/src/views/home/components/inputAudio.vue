@@ -52,7 +52,6 @@
 <script setup lang="ts">
 import { ref, defineEmits } from 'vue'
 import { generate32BitRandomCode } from '../../../utils/common'
-import { clear } from 'console';
 
 const emits = defineEmits(['sendText'])
 
