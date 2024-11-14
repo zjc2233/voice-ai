@@ -28,6 +28,8 @@
     "crypto-js": "^4.2.0",
     "electron-updater": "^6.1.7",
     "element-plus": "^2.8.7",
+    "highlight.js": "^11.10.0",
+    "marked": "^15.0.0",
     "pinia": "^2.2.6",
     "vue-router": "4"
   },

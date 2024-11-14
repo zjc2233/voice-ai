@@ -18,14 +18,33 @@
     </div>
     <div class="airesponse">
       <div class="microphonetranscript" v-for="(item, index) in aiResponseList" :key="index">
-        <div class="text_6">{{ item }}</div>
+        <div class="text_6" v-html="item"></div>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, defineExpose, reactive } from 'vue'
+import { marked } from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/default.css' // 选择你喜欢的样式
 
+// 初始化 marked 配置
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  highlight: function (code, lang) {
+    const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+    return hljs.highlight(code, { language }).value
+  },
+  langPrefix: 'hljs language-', // 与 highlight.js 样式兼容
+  pedantic: false,
+  gfm: true,
+  breaks: false,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false,
+  xhtml: false
+})
 const inputText = ref('')
 const aiResponseList = reactive([])
 //插入文本
@@ -113,7 +132,7 @@ const submitAi = () => {
               const textObj = JSON.parse(text)
               if (textObj.choices[0].delta.content) {
                 received_text += textObj.choices[0].delta.content
-                aiResponseList[aiResponseList.length - 1] = received_text
+                aiResponseList[aiResponseList.length - 1] = marked(received_text)
               }
               console.log('received_text', received_text)
             } catch (err) {
