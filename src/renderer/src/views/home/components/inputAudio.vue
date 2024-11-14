@@ -95,6 +95,9 @@ getMicro()
 
 // 开始采集
 const startIntercom = () => {
+  if (audioContext.value) {
+    return
+  }
   initWebSocket()
 }
 
