@@ -51,6 +51,9 @@ const aiResponseList = reactive([])
 const insertText = (text, immediately = false) => {
   if (immediately) {
     inputText.value = text
+    if (controller) {
+      controller.abort()
+    }
     submitAi()
   } else {
     inputText.value = inputText.value + text
