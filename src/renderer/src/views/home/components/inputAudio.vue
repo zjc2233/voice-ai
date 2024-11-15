@@ -33,10 +33,11 @@
     </el-select>
     <div>
       <el-button type="primary" @click="startIntercom()">开始采集</el-button>
-      <el-button type="danger" @click="websocketSendStop()">暂停</el-button>
-      <el-button type="success" @click="websocketOnOpen()">继续</el-button>
+      <el-button type="danger" @click="websocketSendStop(true)">暂停</el-button>
+      <el-button type="success" @click="isStop = false">继续</el-button>
       <el-button type="danger" @click="stopRecord()">停止录音</el-button>
       <el-button type="info" @click="clearResult()">清空结果</el-button>
+      <el-button type="info" @click="down()">下载空语音数据</el-button>
       <el-button type="success" v-if="audioContext">ok</el-button>
     </div>
     <div class="audio2textResult_box">
@@ -70,6 +71,7 @@ let message_id = ''
 const audio2textResult = ref(['vue2和vue3的区别'])
 const equipmentType = ref('麦克风')
 const equipmentTypeList = ['麦克风', '扬声器']
+let isStop = false
 
 // 获取设备信息
 const getMicro = () => {
@@ -94,6 +96,72 @@ const getMicro = () => {
     })
 }
 getMicro()
+
+function generateBlankWavFile(sampleRate, durationInSeconds) {
+  const numChannels = 1 // 单声道
+  const bitsPerSample = 16 // 16 bit 采样位数
+  const bytesPerSample = bitsPerSample / 8
+  const blockAlign = numChannels * bytesPerSample
+  const byteRate = sampleRate * blockAlign
+  const numSamples = sampleRate * durationInSeconds
+  const dataSize = numSamples * blockAlign
+  const fileSize = 44 + dataSize // WAV 文件头大小为 44 字节
+
+  const buffer = new ArrayBuffer(fileSize)
+  const view = new DataView(buffer)
+
+  // 写入 WAV 文件头
+  writeString(view, 0, 'RIFF') // ChunkID
+  view.setUint32(4, fileSize - 8, true) // ChunkSize
+  writeString(view, 8, 'WAVE') // Format
+  writeString(view, 12, 'fmt ') // Subchunk1ID
+  view.setUint32(16, 16, true) // Subchunk1Size
+  view.setUint16(20, 1, true) // AudioFormat (PCM)
+  view.setUint16(22, numChannels, true) // NumChannels
+  view.setUint32(24, sampleRate, true) // SampleRate
+  view.setUint32(28, byteRate, true) // ByteRate
+  view.setUint16(32, blockAlign, true) // BlockAlign
+  view.setUint16(34, bitsPerSample, true) // BitsPerSample
+  writeString(view, 36, 'data') // Subchunk2ID
+  view.setUint32(40, dataSize, true) // Subchunk2Size
+
+  // 写入空白音频数据
+  for (let i = 0; i < numSamples; i++) {
+    const offset = 44 + i * blockAlign
+    view.setInt16(offset, 0, true) // 写入 16 位 PCM 数据，值为 0
+  }
+
+  return buffer
+}
+
+function writeString(view, offset, string) {
+  for (let i = 0; i < string.length; i++) {
+    view.setUint8(offset + i, string.charCodeAt(i))
+  }
+}
+
+// 生成一个 1 秒的空白 WAV 文件，采样率为 16000 Hz
+const blankWavFile = generateBlankWavFile(16000, 1)
+
+const down = () => {
+  // 将生成的音频数据转换为 Blob 对象
+  const blob = new Blob([blankWavFile], { type: 'audio/wav' })
+
+  // 创建下载链接
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'blank.wav'
+  a.style.display = 'none'
+  document.body.appendChild(a)
+
+  // 触发下载
+  a.click()
+
+  // 清理
+  URL.revokeObjectURL(url)
+  document.body.removeChild(a)
+}
 
 // 开始采集
 const startIntercom = () => {
@@ -130,7 +198,11 @@ const startRecord = () => {
         const pcmData = float32ToPCM(downsampledBuffer)
         // console.log('pcmData', pcmData)
 
-        websocketSend(pcmData)
+        if (isStop) {
+          websocketSend(blankWavFile)
+        } else {
+          websocketSend(pcmData)
+        }
         // console.log('Sent downsampled PCM data:', pcmData.byteLength)
 
         // websocketSendStop() //发送结束
@@ -201,9 +273,10 @@ const initWebSocket = () => {
 }
 
 const websocketOnOpen = () => {
+  isStop = false
   //连接建立之后执行send方法发送数据
   console.log('向 websocket 发送 链接请求')
-  websocket_task_id = websocket_task_id || generate32BitRandomCode() //生成新的任务id
+  websocket_task_id = generate32BitRandomCode() //生成新的任务id
   message_id = message_id || generate32BitRandomCode()
   //actions 是首次连接需要的参数,可自行看阿里云文档
   const actions = {
@@ -228,7 +301,13 @@ const websocketOnOpen = () => {
   }
   websocketSend(JSON.stringify(actions))
 }
-const websocketSendStop = () => {
+const websocketSendStop = (suspend) => {
+  isStop = true
+  if (suspend) {
+    //暂停
+    console.log('暂停')
+    return
+  }
   //连接建立之后发送 StopTranscription指令
   console.log('向  websocket 发送 Stop指令')
   message_id = generate32BitRandomCode()

@@ -9,7 +9,6 @@
       :rows="5"
       v-model="inputText"
       placeholder="请输入您要交互的文本"
-      @keyup.enter.native="submitAi()"
       clearable
     ></el-input>
     <div>
