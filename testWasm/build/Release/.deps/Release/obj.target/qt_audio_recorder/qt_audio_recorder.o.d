@@ -1,4 +1,4 @@
-cmd_Release/obj.target/qt_audio_recorder/qt_audio_recorder.o := c++ -o Release/obj.target/qt_audio_recorder/qt_audio_recorder.o ../qt_audio_recorder.cpp '-DNODE_GYP_MODULE_NAME=qt_audio_recorder' '-DUSING_UV_SHARED=1' '-DUSING_V8_SHARED=1' '-DV8_DEPRECATION_WARNINGS=1' '-DV8_DEPRECATION_WARNINGS' '-DV8_IMMINENT_DEPRECATION_WARNINGS' '-D_GLIBCXX_USE_CXX11_ABI=1' '-D_DARWIN_USE_64_BIT_INODE=1' '-D_LARGEFILE_SOURCE' '-D_FILE_OFFSET_BITS=64' '-DOPENSSL_NO_PINSHARED' '-DOPENSSL_THREADS' '-DBUILDING_NODE_EXTENSION' -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/include/node -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/src -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/openssl/config -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/openssl/openssl/include -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/uv/include -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/zlib -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/v8/include -I../../node_modules/.pnpm/nan@2.22.0/node_modules/nan -I/Users/zhaojuchang/.nvm/versions/node/v18.19.0/bin/node-DQT_MULTIMEDIA_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_NETWORK_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_GUI_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_CORE_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtNetwork.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers  -O3 -gdwarf-2 -mmacosx-version-min=10.15 -arch arm64 -Wall -Wendif-labels -W -Wno-unused-parameter -std=gnu++17 -stdlib=libc++ -fno-rtti -fno-exceptions -fno-strict-aliasing -MMD -MF ./Release/.deps/Release/obj.target/qt_audio_recorder/qt_audio_recorder.o.d.raw -I/opt/homebrew/Cellar/qt@5/5.15.16/include  -c
+cmd_Release/obj.target/qt_audio_recorder/qt_audio_recorder.o := c++ -o Release/obj.target/qt_audio_recorder/qt_audio_recorder.o ../qt_audio_recorder.cpp '-DNODE_GYP_MODULE_NAME=qt_audio_recorder' '-DUSING_UV_SHARED=1' '-DUSING_V8_SHARED=1' '-DV8_DEPRECATION_WARNINGS=1' '-DV8_DEPRECATION_WARNINGS' '-DV8_IMMINENT_DEPRECATION_WARNINGS' '-D_GLIBCXX_USE_CXX11_ABI=1' '-D_DARWIN_USE_64_BIT_INODE=1' '-D_LARGEFILE_SOURCE' '-D_FILE_OFFSET_BITS=64' '-DOPENSSL_NO_PINSHARED' '-DOPENSSL_THREADS' '-DBUILDING_NODE_EXTENSION' -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/include/node -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/src -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/openssl/config -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/openssl/openssl/include -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/uv/include -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/zlib -I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/v8/include -I../../node_modules/.pnpm/nan@2.22.0/node_modules/nan -I/Users/zhaojuchang/.nvm/versions/node/v18.19.0/bin/node-DQT_MULTIMEDIA_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_NETWORK_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_WIDGETS_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_GUI_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_CORE_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtNetwork.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers  -O3 -gdwarf-2 -mmacosx-version-min=10.15 -arch arm64 -Wall -Wendif-labels -W -Wno-unused-parameter -std=gnu++17 -stdlib=libc++ -fno-rtti -fno-exceptions -fno-strict-aliasing -MMD -MF ./Release/.deps/Release/obj.target/qt_audio_recorder/qt_audio_recorder.o.d.raw -I/opt/homebrew/opt/qt@5/include:  -c
 Release/obj.target/qt_audio_recorder/qt_audio_recorder.o: \
   ../qt_audio_recorder.cpp \
   /Users/zhaojuchang/Documents/myProject/electron/voice-ai/node_modules/nan/nan.h \
@@ -151,6 +151,12 @@ Release/obj.target/qt_audio_recorder/qt_audio_recorder.o: \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qlocale.h \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qset.h \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qcontiguouscache.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/QAudioInput \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/qaudioinput.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/qaudio.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/qaudioformat.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/qaudiodeviceinfo.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/QAudioDeviceInfo \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/QAudioEncoderSettings \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QUrl \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qurl.h \
@@ -167,7 +173,23 @@ Release/obj.target/qt_audio_recorder/qt_audio_recorder.o: \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qeventloop.h \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QCoreApplication \
   /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qcoreapplication.h \
-  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qcoreevent.h
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qcoreevent.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers/QApplication \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers/qapplication.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers/qtwidgets-config.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers/qwindowdefs.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qpoint.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers/qcursor.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers/qguiapplication.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers/qinputmethod.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QByteArray \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QBuffer \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qbuffer.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QThread \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qthread.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qdeadlinetimer.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qelapsedtimer.h
 ../qt_audio_recorder.cpp:
 /Users/zhaojuchang/Documents/myProject/electron/voice-ai/node_modules/nan/nan.h:
 /Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/include/node/node_version.h:
@@ -319,6 +341,12 @@ Release/obj.target/qt_audio_recorder/qt_audio_recorder.o: \
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qlocale.h:
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qset.h:
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qcontiguouscache.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/QAudioInput:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/qaudioinput.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/qaudio.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/qaudioformat.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/qaudiodeviceinfo.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/QAudioDeviceInfo:
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers/QAudioEncoderSettings:
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QUrl:
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qurl.h:
@@ -336,3 +364,19 @@ Release/obj.target/qt_audio_recorder/qt_audio_recorder.o: \
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QCoreApplication:
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qcoreapplication.h:
 /opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qcoreevent.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers/QApplication:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers/qapplication.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers/qtwidgets-config.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers/qwindowdefs.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qpoint.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers/qcursor.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers/qguiapplication.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers/qinputmethod.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QByteArray:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QBuffer:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qbuffer.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/QThread:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qthread.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qdeadlinetimer.h:
+/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers/qelapsedtimer.h:

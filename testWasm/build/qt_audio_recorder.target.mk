@@ -58,7 +58,7 @@ INCS_Debug := \
 	-I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/zlib \
 	-I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/v8/include \
 	-I$(srcdir)/../node_modules/.pnpm/nan@2.22.0/node_modules/nan \
-	-I/Users/zhaojuchang/.nvm/versions/node/v18.19.0/bin/node-DQT_MULTIMEDIA_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_NETWORK_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_GUI_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_CORE_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtNetwork.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers
+	-I/Users/zhaojuchang/.nvm/versions/node/v18.19.0/bin/node-DQT_MULTIMEDIA_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_NETWORK_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_WIDGETS_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_GUI_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_CORE_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtNetwork.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=qt_audio_recorder' \
@@ -113,7 +113,7 @@ INCS_Release := \
 	-I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/zlib \
 	-I/Users/zhaojuchang/Library/Caches/node-gyp/18.19.0/deps/v8/include \
 	-I$(srcdir)/../node_modules/.pnpm/nan@2.22.0/node_modules/nan \
-	-I/Users/zhaojuchang/.nvm/versions/node/v18.19.0/bin/node-DQT_MULTIMEDIA_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_NETWORK_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_GUI_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_CORE_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtNetwork.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers
+	-I/Users/zhaojuchang/.nvm/versions/node/v18.19.0/bin/node-DQT_MULTIMEDIA_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_NETWORK_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_WIDGETS_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_GUI_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -DQT_CORE_LIB -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtMultimedia.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtNetwork.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtWidgets.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtGui.framework/Headers -I/opt/homebrew/Cellar/qt@5/5.15.16/lib/QtCore.framework/Headers
 
 OBJS := \
 	$(obj).target/$(TARGET)/qt_audio_recorder.o
@@ -170,7 +170,7 @@ LIBTOOLFLAGS_Release := \
 
 LIBS := \
 	-L/opt/homebrew/Cellar/qt@5/5.15.16/lib \
-	-F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtMultimedia -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtNetwork -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtGui -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtCore
+	-F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtMultimedia -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtNetwork -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtWidgets -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtGui -F/opt/homebrew/Cellar/qt@5/5.15.16/lib -framework QtCore
 
 $(builddir)/qt_audio_recorder.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/qt_audio_recorder.node: LIBS := $(LIBS)
